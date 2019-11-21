@@ -10,7 +10,8 @@ int main()
     int c;
     long count = 0;
     while ((c = getchar()) != EOF)
-        count += 1;
+        if (c == '\n')
+            count+=1;
     printf("%ld", count); // 最基本的字符串遍历，稍作修改就能成为各种有用的程序
     return 0;
 }
