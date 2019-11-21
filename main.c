@@ -7,23 +7,22 @@
 #define OUT 0
 #define IN 1
 
+long power(int base, int n); // 先声明后使用
+
 int main()
 {
-    long c, line_count, word_count, char_count, state;
-    while ((c = getchar()) != EOF)
-    {
-        if (c == '\n')
-            line_count += 1;
-        if (c == ' ' || c == '\n' || c == '\t')
-            state = OUT;
-        else if (state == OUT)
-        {
-            state = IN;
-            word_count += 1;
-        }
-        char_count += 1;
-    }
-
-    printf("%ld %ld %ld", line_count, word_count, char_count); // 最基本的字符串遍历，稍作修改就能成为各种有用的程序
+    // 这本书其实是按照螺旋式的方法来写的，先向大家展示基本用法，然后在后面的章节来逐渐深入。
+    printf("%ld", power(10, 10));
     return 0;
+}
+
+long power(int base, int n)
+{
+    int i;
+    long p = 1;
+    for (i = 1; i <= n; i += 1)
+    {
+        p *= base;
+    }
+    return p;
 }
