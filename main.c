@@ -4,14 +4,26 @@
 
 #define LOWER 0
 #define HIGH 10
+#define OUT 0
+#define IN 1
 
 int main()
 {
-    int c;
-    long count = 0;
+    long c, line_count, word_count, char_count, state;
     while ((c = getchar()) != EOF)
+    {
         if (c == '\n')
-            count+=1;
-    printf("%ld", count); // 最基本的字符串遍历，稍作修改就能成为各种有用的程序
+            line_count += 1;
+        if (c == ' ' || c == '\n' || c == '\t')
+            state = OUT;
+        else if (state == OUT)
+        {
+            state = IN;
+            word_count += 1;
+        }
+        char_count += 1;
+    }
+
+    printf("%ld %ld %ld", line_count, word_count, char_count); // 最基本的字符串遍历，稍作修改就能成为各种有用的程序
     return 0;
 }
