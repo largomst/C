@@ -7,19 +7,19 @@
 #define OUT 0
 #define IN 1
 
-long power(int base, int n); // 先声明后使用
+long long power(int base, int n); // 先声明后使用
 
 int main()
 {
     // 这本书其实是按照螺旋式的方法来写的，先向大家展示基本用法，然后在后面的章节来逐渐深入。
-    printf("%ld", power(10, 10));
+    printf("%lld", power(10, 10));
     return 0;
 }
 
-long power(int base, int n)
+long long power(int base, int n)
 {
     int i;
-    long p = 1;
+    long long p = 1;
     for (i = 1; i <= n; i += 1)
     {
         p *= base;
