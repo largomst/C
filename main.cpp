@@ -7,22 +7,27 @@
 #define OUT 0
 #define IN 1
 
-long power(int base, int n); // 先声明后使用
+void foo(int *&a, int*&b);
 
 int main()
 {
     // 这本书其实是按照螺旋式的方法来写的，先向大家展示基本用法，然后在后面的章节来逐渐深入。
-    printf("%ld", power(10, 10));
+    int a = 1;
+    int b = 2;
+    int *aPtr = &a;
+    int *bPtr = &b;
+    int *&arPtr = aPtr;
+    int *&brPtr = bPtr;
+    foo(arPtr,brPtr);
+    printf("%d\n",a);
+    printf("%d",b);
     return 0;
 }
 
-long power(int base, int n)
-{
-    int i;
-    long p = 1;
-    for (i = 1; i <= n; i += 1)
-    {
-        p *= base;
-    }
-    return p;
+void foo(int *&a, int *&b){
+    (*a)++;
+    (*b)++;
+    // int tem = *a;
+    // *a = *b;
+    // *b = tem;
 }
